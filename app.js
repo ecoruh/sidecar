@@ -20,10 +20,10 @@ let crop50 = `Overrides = {
 					},
 				},`;
 
-const crop = (file, contents, crop) => {
+const crop = (file, contents, cropVar) => {
 	if(contents.match(/Overrides = {\n\t+},/g)) {
 		console.log(`empty overrides detected for ${file}..cropping..`);
-		let cropped = contents.replace(/Overrides = {[\s\S]*?},/g, crop, 'utf8');
+		let cropped = contents.replace(/Overrides = {[\s\S]*?},/g, cropVar, 'utf8');
 		fs.writeFileSync(file, cropped);
 	}
 } 
@@ -32,9 +32,10 @@ let cropVar = crop35;
 
 if (process.argv.length > 2) {
 	if (process.argv[2] == '?') {
-		console.log('usage: sidecar [35] | 50, will crop dop files 35 or 50 mm, default: 35')
+		console.log('usage: sidecar [35] | 50, will crop dop files 35 or 50 mm, default: 35');
+		process.exit(1);
 	}
-	if (process.argv[2] == '50') {
+	if (process.argv[2] === "50") {
 		cropVar = crop50;
 	}
 }
