@@ -31,7 +31,7 @@ const crop = (file, contents, cropVar) => {
 		let cropped = contents.replace(/Overrides = {[\s\S]*?},/g, cropVar, 'utf8');
 		fs.writeFileSync(file, cropped);
 	} else if( contents.substring(cropAuto)) {
-		console.log(`crop50 overrides detected for ${file}..cropping..`);
+		console.log(`crop overrides detected for ${file}..cropping..`);
 		let cropped = contents.replace( cropAuto, cropVar, 'utf8');
 		fs.writeFileSync(file, cropped);
 	}
