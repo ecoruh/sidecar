@@ -1,5 +1,5 @@
 # sidecar
-Node.js utility to encode 35 mm or 50 mm crop centered on *.dop files (aka sidecar files) of DxO PhotoLab RAW image processing utility). 
+Node.js utility to encode 35 mm or 50 mm centered crop on *.dop files (aka sidecar files) of DxO PhotoLab RAW image processing utility. 
 
 This utility has the ability to process multiple dop files in the current directory.
 
