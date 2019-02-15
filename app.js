@@ -21,7 +21,7 @@ let cropVar = fs.readFileSync('crop35mm', 'utf8');
 
 if (process.argv.length > 2) {
   if (process.argv[2] == '?') {
-    console.log('usage: sidecar [35] | 50, will crop dop files 35 or 50 mm, default: 35');
+    console.log('usage: sidecar [35|50], will crop dop files 35 or 50 mm, default: 35');
     process.exit(1);
   }
   if (process.argv[2] === "50") {
