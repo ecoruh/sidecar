@@ -5,10 +5,12 @@ const crop = (file, contents, _cropVar) => {
   console.log(`cropping ${file}..`)
   let matched = contents.match(/Overrides = {[\s\S]*?},\r?\n\t+Version = "13.0"/g);
   if (matched[0].includes('CropRect')) {
+    // Overrides block has some data (customisation/editing took place)
     let cropped = matched[0].replace(/\t+CropAuto = false,\r?\n/g, '', 'utf8');
     cropped = cropped.replace(/\t+CropRect = {[\s,.0-9]*?},\r?\n/g, _cropVar, 'utf8');
     result = contents.replace(/Overrides = {[\s\S]*?},\r?\n\t+Version = "13.0"/g, cropped, 'utf8');
   } else {
+    // Overrides block is empty, no customisation/editing took place
     let tVar = '' + _cropVar;
     tVar.trimRight();
     let cropped = matched[0].replace(/\r?\n\t+},/g, "\n" + tVar +"\t\t\t\t},", 'utf8');
