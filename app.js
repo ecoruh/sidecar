@@ -38,7 +38,7 @@ const crop = (file, contents, cropVar) => {
 
 } 
 
-let cropVar = crop35;
+let _cropVar = crop35;
 
 if (process.argv.length > 2) {
 	if (process.argv[2] == '?') {
@@ -46,14 +46,14 @@ if (process.argv.length > 2) {
 		process.exit(1);
 	}
 	if (process.argv[2] === "50") {
-		cropVar = crop50;
+		_cropVar = crop50;
 	}
 }
 
 fs.readdirSync('./').forEach(file => {
 	if (file.endsWith('.dop')) {
 		let contents = fs.readFileSync(file, 'utf8');
-		crop(file, contents, cropVar);
+		crop(file, contents, _cropVar);
 	}
 });
 
