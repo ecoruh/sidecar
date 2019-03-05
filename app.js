@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const crop = (file, contents, _cropVar) => {
   let result = contents;
@@ -19,7 +20,7 @@ const crop = (file, contents, _cropVar) => {
   fs.writeFileSync(`./${file}`, result, 'utf8');
 }
 
-let cropVar = fs.readFileSync('crop35mm', 'utf8');
+let cropVar = fs.readFileSync(path.resolve(__dirname, 'crop35mm'), 'utf8');
 
 if (process.argv.length > 2) {
   if (process.argv[2] == '?') {
@@ -27,7 +28,7 @@ if (process.argv.length > 2) {
     process.exit(1);
   }
   if (process.argv[2] === "50") {
-    cropVar = fs.readFileSync('crop50mm', 'utf8');;
+    cropVar = fs.readFileSync(path.resolve(__dirname, 'crop50mm'), 'utf8');;
   }
 }
 
